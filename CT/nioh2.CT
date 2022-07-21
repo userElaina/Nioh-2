@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="42">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>33</ID>
+      <Description>"编辑装备"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : nioh2.exe
+  Version: 
+  Date   : 2021-02-06
+  Author : asd53
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(INJECT,nioh2.exe,48 89 9F 00 01 00 00 80) // should be unique
+alloc(newmem,$1000,INJECT)
+
+label(code)
+label(return)
+
+registersymbol(weaponaddr)
+
+newmem:
+
+code:
+  mov [weaponaddr], rbx
+  mov [rdi+00000100],rbx
+  jmp return
+
+weaponaddr:
+  dq #0
+
+INJECT:
+  jmp newmem
+  nop 2
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+INJECT:
+  db 48 89 9F 00 01 00 00
+
+unregistersymbol(INJECT)
+unregistersymbol(weaponaddr)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: nioh2.exe+12ABA5B
+
+nioh2.exe+12ABA33: 4D 85 E4                 - test r12,r12
+nioh2.exe+12ABA36: 74 23                    - je nioh2.exe+12ABA5B
+nioh2.exe+12ABA38: 40 88 74 24 30           - mov [rsp+30],sil
+nioh2.exe+12ABA3D: 44 0F B6 CD              - movzx r9d,bpl
+nioh2.exe+12ABA41: C6 44 24 28 01           - mov byte ptr [rsp+28],01
+nioh2.exe+12ABA46: 4C 8B C3                 - mov r8,rbx
+nioh2.exe+12ABA49: 33 D2                    - xor edx,edx
+nioh2.exe+12ABA4B: C7 44 24 20 02 00 00 00  - mov [rsp+20],00000002
+nioh2.exe+12ABA53: 49 8B CC                 - mov rcx,r12
+nioh2.exe+12ABA56: E8 55 34 FF FF           - call nioh2.exe+129EEB0
+// ---------- INJECTING HERE ----------
+nioh2.exe+12ABA5B: 48 89 9F 00 01 00 00     - mov [rdi+00000100],rbx
+// ---------- DONE INJECTING  ----------
+nioh2.exe+12ABA62: 80 BC 24 A0 00 00 00 00  - cmp byte ptr [rsp+000000A0],00
+nioh2.exe+12ABA6A: 48 8B CF                 - mov rcx,rdi
+nioh2.exe+12ABA6D: 4C 8B 7C 24 50           - mov r15,[rsp+50]
+nioh2.exe+12ABA72: 4C 8B 74 24 58           - mov r14,[rsp+58]
+nioh2.exe+12ABA77: 4C 8B 6C 24 60           - mov r13,[rsp+60]
+nioh2.exe+12ABA7C: 4C 8B 64 24 68           - mov r12,[rsp+68]
+nioh2.exe+12ABA81: 48 8B 74 24 70           - mov rsi,[rsp+70]
+nioh2.exe+12ABA86: 48 8B 9C 24 98 00 00 00  - mov rbx,[rsp+00000098]
+nioh2.exe+12ABA8E: 74 0C                    - je nioh2.exe+12ABA9C
+nioh2.exe+12ABA90: 83 BF BC 00 00 00 00     - cmp dword ptr [rdi+000000BC],00
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"装备地址"</Description>
+          <ShowAsHex>1</ShowAsHex>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>8 Bytes</VariableType>
+          <Address>weaponaddr</Address>
+          <Offsets>
+            <Offset>0</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>7</ID>
+              <Description>"无描述"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>8</ID>
+              <Description>"无描述"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>35</ID>
+              <Description>"等级"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+6</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9</ID>
+              <Description>"等级"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>10</ID>
+              <Description>"爱用度"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>11</ID>
+              <Description>"标志"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>12</ID>
+              <Description>"品质"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+14</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>13</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+18</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>14</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+1c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>15</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+20</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+24</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>17</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+28</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>18</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+2c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>19</ID>
+              <Description>"特效1ID"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>0000FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+30</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>20</ID>
+              <Description>"特效1数值"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>0000FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+34</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>21</ID>
+              <Description>"特效1隐藏值"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>0000FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+38</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>22</ID>
+              <Description>"特效2ID"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>0080FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+3c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>23</ID>
+              <Description>"特效2数值"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>0080FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+40</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>24</ID>
+              <Description>"特效2隐藏值"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>0080FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+44</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>25</ID>
+              <Description>"特效3ID"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00D5D5</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+48</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>26</ID>
+              <Description>"特效3数值"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00D5D5</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>27</ID>
+              <Description>"特效3隐藏值"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FFFF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+50</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>28</ID>
+              <Description>"特效4ID"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+54</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>29</ID>
+              <Description>"特效4数值"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+58</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>30</ID>
+              <Description>"特效4隐藏值"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+5c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>38</ID>
+              <Description>"特效5ID"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>FFFF00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+60</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>39</ID>
+              <Description>"特效5数值"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>FFFF00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+64</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>40</ID>
+              <Description>"特效5隐藏值"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>FFFF00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+68</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>41</ID>
+              <Description>"特效6ID"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>FF0000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+6c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>42</ID>
+              <Description>"特效6数值"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>FF0000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+70</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>43</ID>
+              <Description>"特效6隐藏值"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>FF0000</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+74</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>44</ID>
+              <Description>"特效7ID"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>FF0080</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+78</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>45</ID>
+              <Description>"特效7数值"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>FF0080</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+7c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>46</ID>
+              <Description>"特效7隐藏值"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>800080</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+80</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>36</ID>
+      <Description>"多倍重铸"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : nioh2.exe
+  Version: 
+  Date   : 2021-02-06
+  Author : asd53
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(INJECT,nioh2.exe,89 43 04 45 84 F6) // should be unique
+alloc(newmem,$1000,INJECT)
+
+label(code)
+label(return)
+
+registersymbol(recastmultiple)
+
+newmem:
+
+code:
+  imul eax, [recastmultiple]
+  mov [rbx+04],eax
+  test r14l,r14l
+  jmp return
+
+recastmultiple:
+  dq #2
+
+INJECT:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+INJECT:
+  db 89 43 04 45 84 F6
+
+unregistersymbol(INJECT)
+unregistersymbol(recastmultiple)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: nioh2.exe+F4BC7B
+
+nioh2.exe+F4BC4E: 0F 57 C0                 - xorps xmm0,xmm0
+nioh2.exe+F4BC51: F3 48 0F 2A C0           - cvtsi2ss xmm0,rax
+nioh2.exe+F4BC56: 41 0F BF 40 08           - movsx eax,word ptr [r8+08]
+nioh2.exe+F4BC5B: 44 89 4B 08              - mov [rbx+08],r9d
+nioh2.exe+F4BC5F: F3 0F 59 C8              - mulss xmm1,xmm0
+nioh2.exe+F4BC63: 66 0F 6E C0              - movd xmm0,eax
+nioh2.exe+F4BC67: 0F 5B C0                 - cvtdq2ps xmm0,xmm0
+nioh2.exe+F4BC6A: F3 0F 5E 0D 92 87 28 01  - divss xmm1,[nioh2.exe+21D4404]
+nioh2.exe+F4BC72: F3 0F 58 C8              - addss xmm1,xmm0
+nioh2.exe+F4BC76: F3 48 0F 2C C1           - cvttss2si rax,xmm1
+// ---------- INJECTING HERE ----------
+nioh2.exe+F4BC7B: 89 43 04                 - mov [rbx+04],eax
+// ---------- DONE INJECTING  ----------
+nioh2.exe+F4BC7E: 45 84 F6                 - test r14l,r14l
+nioh2.exe+F4BC81: 74 42                    - je nioh2.exe+F4BCC5
+nioh2.exe+F4BC83: 41 8B 40 10              - mov eax,[r8+10]
+nioh2.exe+F4BC87: 41 3B FB                 - cmp edi,r11d
+nioh2.exe+F4BC8A: 41 0F 4D FB              - cmovge edi,r11d
+nioh2.exe+F4BC8E: 48 69 C8 F5 01 00 00     - imul rcx,rax,000001F5
+nioh2.exe+F4BC95: 48 63 C7                 - movsxd  rax,edi
+nioh2.exe+F4BC98: 48 03 C8                 - add rcx,rax
+nioh2.exe+F4BC9B: 41 0F BF 40 16           - movsx eax,word ptr [r8+16]
+nioh2.exe+F4BCA0: 8B 0C 8A                 - mov ecx,[rdx+rcx*4]
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>37</ID>
+          <Description>"倍率"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>recastmultiple</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>49</ID>
+      <Description>"编辑魂核"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : nioh2.exe
+  Version: 
+  Date   : 2021-02-08
+  Author : asd53
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(INJECT,nioh2.exe,44 8B 4C 86 34) // should be unique
+alloc(newmem,$1000,INJECT)
+
+label(code)
+label(return)
+
+registersymbol(coreaddr)
+
+newmem:
+
+code:
+  mov [coreaddr], rsi
+  mov r9d,[rsi+rax*4+34]
+  jmp return
+
+coreaddr:
+  dq #0
+
+INJECT:
+  jmp newmem
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+INJECT:
+  db 44 8B 4C 86 34
+
+unregistersymbol(INJECT)
+unregistersymbol(coreaddr)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: nioh2.exe+12D95FD
+
+nioh2.exe+12D95D7: 33 C0                 - xor eax,eax
+nioh2.exe+12D95D9: 48 89 45 20           - mov [rbp+20],rax
+nioh2.exe+12D95DD: 48 89 45 28           - mov [rbp+28],rax
+nioh2.exe+12D95E1: 48 89 45 30           - mov [rbp+30],rax
+nioh2.exe+12D95E5: 48 89 45 38           - mov [rbp+38],rax
+nioh2.exe+12D95E9: 48 89 45 40           - mov [rbp+40],rax
+nioh2.exe+12D95ED: 48 89 45 48           - mov [rbp+48],rax
+nioh2.exe+12D95F1: 48 89 45 50           - mov [rbp+50],rax
+nioh2.exe+12D95F5: 48 89 45 58           - mov [rbp+58],rax
+nioh2.exe+12D95F9: 48 8B 45 E8           - mov rax,[rbp-18]
+// ---------- INJECTING HERE ----------
+nioh2.exe+12D95FD: 44 8B 4C 86 34        - mov r9d,[rsi+rax*4+34]
+// ---------- DONE INJECTING  ----------
+nioh2.exe+12D9602: 41 B8 20 00 00 00     - mov r8d,00000020
+nioh2.exe+12D9608: 48 8D 55 20           - lea rdx,[rbp+20]
+nioh2.exe+12D960C: 48 8B 74 24 78        - mov rsi,[rsp+78]
+nioh2.exe+12D9611: 48 8B CE              - mov rcx,rsi
+nioh2.exe+12D9614: E8 37 78 87 FF        - call nioh2.exe+B50E50
+nioh2.exe+12D9619: C7 45 B0 00 00 00 00  - mov [rbp-50],00000000
+nioh2.exe+12D9620: 8B 05 02 1B A3 00     - mov eax,[nioh2.exe+1D0B128]
+nioh2.exe+12D9626: 89 45 B4              - mov [rbp-4C],eax
+nioh2.exe+12D9629: 89 45 B8              - mov [rbp-48],eax
+nioh2.exe+12D962C: 89 45 BC              - mov [rbp-44],eax
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>50</ID>
+          <Description>"无描述"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>coreaddr</Address>
+          <Offsets>
+            <Offset>0</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>51</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>52</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>79</ID>
+              <Description>"等级"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+6</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>53</ID>
+              <Description>"等级"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>54</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>55</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+10</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>56</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>+14</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>81</ID>
+              <Description>"魂核阶级"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+15</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>80</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>2 Bytes</VariableType>
+              <Address>+16</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>57</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+18</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>58</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+1c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>59</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+20</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>60</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+24</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>61</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+28</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>62</ID>
+              <Description>"无描述"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+2c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>63</ID>
+              <Description>"词缀1ID"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>0000FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+30</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>64</ID>
+              <Description>"词缀1数值"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>0000FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+34</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>65</ID>
+              <Description>"词缀1隐藏值"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>0000FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+38</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>66</ID>
+              <Description>"词缀2ID"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>0080FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+3c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>67</ID>
+              <Description>"词缀2数值"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>0080FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+40</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>68</ID>
+              <Description>"词缀2隐藏值"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>0080FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+44</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>69</ID>
+              <Description>"词缀3ID"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00DDDD</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+48</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>70</ID>
+              <Description>"词缀3数值"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00DDDD</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+4c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>71</ID>
+              <Description>"词缀3隐藏值"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FFFF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+50</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>72</ID>
+              <Description>"词缀4ID"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+54</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>73</ID>
+              <Description>"词缀4数值"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+58</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>74</ID>
+              <Description>"词缀4隐藏值"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+5c</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>75</ID>
+              <Description>"词缀5ID"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>EEEE00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+60</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>76</ID>
+              <Description>"词缀5数值"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>EEEE00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+64</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>77</ID>
+              <Description>"词缀5隐藏值"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>FFFF00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>+68</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
